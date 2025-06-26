@@ -17,11 +17,21 @@
       @next-shader="onNextShader"
     />
 
+    <!-- ✅ 手势指引卡片（可拖动） -->
+    <el-card class="gesture-guide-card" shadow="hover" @mousedown.stop>
+      <div class="card-header">🧭 手势交互指南</div>
+      <ul>
+        <li>🖐️ 张开五指：进入缩放模式</li>
+        <li>🤏 捏合拇指与食指：控制缩放</li>
+        <li>✊ 保持拇指与食指收起后三指：退出缩放模式</li>
+        <li>✌️ V 手势：切换地球材质</li>
+      </ul>
+    </el-card>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import HandTracker from '@/components/handtrack/HandTracker.vue'
 import EarthScene from '@/components/uearth.vue'
 import SettingsPanel from '@/components/SettingsPanel.vue'
@@ -43,7 +53,6 @@ function onScaleChange({ factor }: { factor: number }) {
   earthRef.value?.scaleModel(factor)
 }
 
-
 const onToggleSpin = (enable: boolean) => {
   earthRef.value?.setAutoSpin?.(enable)
 }
@@ -60,6 +69,31 @@ const onNextShader = () => {
   earthRef.value?.nextShaderStage()
 }
 
+// ✅ 拖动卡片逻辑
+onMounted(() => {
+  const card = document.querySelector('.gesture-guide-card') as HTMLElement
+  if (!card) return
+  let isDragging = false
+  let offsetX = 0, offsetY = 0
+
+  card.addEventListener('mousedown', (e) => {
+    isDragging = true
+    offsetX = e.clientX - card.offsetLeft
+    offsetY = e.clientY - card.offsetTop
+    document.body.style.userSelect = 'none'
+  })
+
+  document.addEventListener('mousemove', (e) => {
+    if (!isDragging) return
+    card.style.left = `${e.clientX - offsetX}px`
+    card.style.top = `${e.clientY - offsetY}px`
+  })
+
+  document.addEventListener('mouseup', () => {
+    isDragging = false
+    document.body.style.userSelect = ''
+  })
+})
 </script>
 
 <style scoped>
@@ -89,7 +123,40 @@ const onNextShader = () => {
   overflow: hidden;
   z-index: 10;
   background: rgba(0, 0, 0, 0.2);
+  pointer-events: auto;
+}
 
-   pointer-events: auto; /* ✅ 明确可交互 */
+/* ✅ 手势指南卡片样式 */
+.gesture-guide-card {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 260px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(6px);
+  border-radius: 10px;
+  padding: 10px;
+  cursor: grab;
+  z-index: 15;
+  font-size: 14px;
+  color: #333;
+  transition: box-shadow 0.2s ease;
+}
+
+.gesture-guide-card .card-header {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #409EFF;
+}
+
+.gesture-guide-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.gesture-guide-card li {
+  margin-bottom: 6px;
 }
 </style>

@@ -50,7 +50,7 @@ class Three extends Base {
         this.scene.background = new THREE.Color('#001f3f')
         break
       case 'stars':
-        loader.load('/backgrounds/stars.jpg', texture => {
+        loader.load('/images/101.png', texture => {
           this.scene.background = texture
         })
         break

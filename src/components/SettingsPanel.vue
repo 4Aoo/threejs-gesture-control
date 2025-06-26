@@ -51,7 +51,7 @@ const spin = ref(false)
 .settings-panel {
     position: absolute;
     left: 24px;
-    bottom: 24px;
+    bottom: 80px;
     width: 260px;
     z-index: 20;
     background: white;
