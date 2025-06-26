@@ -79,8 +79,9 @@ public/
 
 ---
 
-## 🙌 外部库
+## 🙌 reference
 
+- [模型资产](https://www.bilibili.com/video/BV1w94y1z73L?spm_id_from=333.788.videopod.sections&vd_source=4042c0966325a232439d80f4a9dd39ff）
 - [MediaPipe](https://mediapipe.dev/)
 - [Three.js](https://threejs.org/)
 - [Element Plus](https://element-plus.org/)
