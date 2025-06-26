@@ -34,7 +34,13 @@
 import { ref } from 'vue'
 
 const props = defineProps<{ currentGesture: string }>()
-const emit = defineEmits(['toggle-ring', 'switch-texture', 'reset-view', 'next-shader'])
+const emit = defineEmits<{
+  (e: 'toggle-spin', value: boolean): void
+  (e: 'reset-view'): void
+  (e: 'next-shader'): void
+  (e: 'switch-background', value: 'black' | 'stars' | 'navy'): void
+}>()
+
 
 const mode = ref<'black' | 'stars' | 'navy'>('black')
 const spin = ref(false)

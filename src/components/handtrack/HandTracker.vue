@@ -13,7 +13,11 @@ import { ref, onMounted } from 'vue'
 import { useWebcam } from './useWebcam'
 import { useHandTracker } from './useHandTracker'
 import HandVisualizer from './HandVisualizer'
-const emit = defineEmits(['gesture-confirmed'])
+const emit = defineEmits<{
+  (e: 'gesture-confirmed', payload: { gesture: string, position: any }): void
+  (e: 'scale-change', payload: { factor: number }): void
+}>()
+
 
 const videoRef = ref<HTMLVideoElement>()
 const canvasRef = ref<HTMLCanvasElement>()
