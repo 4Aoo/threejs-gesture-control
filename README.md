@@ -3,7 +3,8 @@
 
 实时手势交互的 3D 地球可视化项目，结合 **Three.js + MediaPipe + Vue 3** 实现，通过摄像头识别手势操作，控制地球模型的材质切换、缩放、旋转等动态行为。
 
-![screenshot](./public/screenshot.png)
+🔗 在线预览地址：[点击访问]([https://your-name.vercel.app](https://threejs-gesture-control-rzbf.vercel.app/))
+![视频展示](./public/video/展示视频.mp4)
 
 ---
 
