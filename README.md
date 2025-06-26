@@ -3,8 +3,9 @@
 
 实时手势交互的 3D 地球可视化项目，结合 **Three.js + MediaPipe + Vue 3** 实现，通过摄像头识别手势操作，控制地球模型的材质切换、缩放、旋转等动态行为。
 
-🔗 在线预览地址：[点击访问]([https://your-name.vercel.app](https://threejs-gesture-control-rzbf.vercel.app/))
-![视频展示](./public/video/展示视频.mp4)
+🔗 在线预览地址：[点击访问](https://threejs-gesture-control-rzbf.vercel.app/)
+
+![交互功能展示](public/images/展示.gif)
 
 ---
 
@@ -15,7 +16,6 @@
 - 🎮 交互控制：
   - **V 手势**：切换地球材质显示阶段（贴图 → 法线 → 光照 → 金属/粗糙度）
   - **五指张开**：进入缩放控制模式，拇指与食指距离控制缩放
-  - **食指 Point**：进入旋转控制模式，左右移动控制地球自转
   - **握拳**：退出当前控制模式
 - 🔁 状态提示：环形进度圈 + 文字提示确认手势识别
 - 🧩 组件化结构：前端完全使用 Vue3 + Composition API 编写，组件灵活可复用
@@ -35,13 +35,6 @@
 ---
 
 ## 📦 安装与运行
-
-### 克隆项目
-
-```bash
-git clone git@github.com:your-username/handtrack-3d-earth.git
-cd handtrack-3d-earth
-```
 
 ### 安装依赖
 
@@ -82,27 +75,11 @@ public/
 |----------|--------------------|
 | ✌️ V 手势   | 材质切换             |
 | ✋ 张开五指 | 进入缩放控制         |
-| 👉 食指 Point | 控制旋转（左右滑动）  |
 | ✊ 握拳     | 退出缩放/旋转模式     |
 
 ---
 
-## ✨ TODO（可扩展方向）
-
-- 添加平移控制（如中指 Point）
-- 引入深度图模拟更多光照材质
-- 多手互动（双手不同手势控制多个对象）
-- 与 LeapMotion / Depth Camera 联动
-
----
-
-## 📄 License
-
-MIT License © 2025 [Your Name]
-
----
-
-## 🙌 鸣谢
+## 🙌 外部库
 
 - [MediaPipe](https://mediapipe.dev/)
 - [Three.js](https://threejs.org/)
